@@ -3,14 +3,14 @@ import struct
 import threading
 
 MULTICAST_GROUP = '224.1.1.1'   # Multicast address
-PORT = 5007                    # Port number
+PORT = 5007                   # Port number
 
 def receive_messages(sock):
     """Receive messages and print to screen"""
     while True:
         data, address = sock.recvfrom(1024)
         print(f"\n[Message from {address}] {data.decode()}")
-        print("You: ", end="", flush=True)
+        print("You: ",end="", flush=True)
 
 def main():
     # Create UDP socket
@@ -34,7 +34,7 @@ def main():
 
     # Send messages
     while True:
-        message = input("You: ")
+        message = input()
         sock.sendto(message.encode(), (MULTICAST_GROUP, PORT))
 
 if __name__ == "__main__":
